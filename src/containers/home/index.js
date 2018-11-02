@@ -9,7 +9,7 @@ import {
   decrementAsync
 } from "../../modules/counter";
 
-const Home = props => {
+const Home = props => (
   <div>
     <h1>Home</h1>
     <p>Count: {props.count}</p>
@@ -22,12 +22,19 @@ const Home = props => {
     </p>
 
     <p>
-      <button onClick={() => props.changePage()}>
-        Go to about page via redx
+      <button onClick={props.decrement}>Decrementing</button>
+      <button onClick={props.decrementAsync} disabled={props.isDecrementing}>
+        Decrement Async
       </button>
     </p>
-  </div>;
-};
+
+    <p>
+      <button onClick={() => props.changePage()}>
+        Go to about page via redux
+      </button>
+    </p>
+  </div>
+);
 
 const mapStateToProps = ({ counter }) => ({
   count: counter.count,
@@ -51,13 +58,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Home);
-
-/* 
-This should be straight forward for those who have used Redux before but what is special in this example is we can import push from connected-react-router and use within our action creator
-import { incrementAsync, decrementAsync } from '../../modules/counter';
-
-Since our Store knows about connected-react-router it can manage and act on routing actions. Magic .
-
-Finally , create the About component to allow our router to actually do something 
-
-*/

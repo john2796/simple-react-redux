@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-export default = () => (
+export default () => (
   <div>
     <h1>About us</h1>
     <p>Hello Medium!</p>
   </div>
-)
+);
 
 /* 
 4. Rendering our app 
